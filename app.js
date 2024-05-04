@@ -37,12 +37,17 @@ async function getImg(){
 if(i % 3 === 0) {
   editorChoice.innerHTML += `<div class="row">`
 }
-    editorChoice.innerHTML += `<div class="card grid-container">
-    <div class="img-gallery">
-    <img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
-    <a href="photos.html?id=${imgId}"><p class="text-center">${imgTag}</p></a>
-    </div>
-    </div>
+    editorChoice.innerHTML += `
+    <div class="card grid-container">
+<a href="photos.html?id=${imgId}">
+<div class="img-gallery">
+<img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
+<div class="middle">
+<p class="text-center">${imgTag}</p>
+</div>
+</a>
+</div>
+</div>
     `  
   }
 
@@ -50,7 +55,7 @@ if(i % 3 === 0) {
 getImg()
 
 
-async function postImg(){
+async function postImgIllustration(){
   let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&page=${pageMore}&per_page=14&image_type=illustration`)
    let imgRaw = await imgData.json()
    console.log(imgRaw)
@@ -62,7 +67,7 @@ async function postImg(){
     let item = itemData[i] //i stands for those id starts from 0 in the api. 
     //It won't possible to display image if we don't add i
     let imgId = item.id 
-    let imgType = item.type
+    let imgType = item.type 
     let imgPreview = item.previewURL
     let imgTag = item.tags
     let webImg = item.webformatURL
@@ -83,15 +88,19 @@ if(i % 3 === 0) {
   randomchoice.innerHTML += `<div class="row">`
 }
 randomchoice.innerHTML += `<div class="card grid-container">
-    <div class="img-gallery">
-    <img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
-    <a href="photos.html?id=${imgId}"><p class="text-center">${imgTag}</p></a>
-    </div>
-    </div>
+<a href="photos.html?id=${imgId}">
+<div class="img-gallery">
+<img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
+<div class="middle">
+<p class="text-center">${imgTag}</p>
+</div>
+</a>
+</div>
+</div>
     `  
   }
 }
-postImg()
+postImgIllustration()
 
 async function vectImg(){
   let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&category=travel&page=${pageMore}&per_page=19&image_type=photo`)
@@ -126,11 +135,15 @@ if(i % 3 === 0) {
   vectorImg.innerHTML += `<div class="row">`
 }
 vectorImg.innerHTML += `<div class="card grid-container">
-    <div class="img-gallery">
-    <img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
-    <a href="photos.html?id=${imgId}"><p class="text-center">${imgTag}</p></a>
-    </div>
-    </div>
+<a href="photos.html?id=${imgId}">
+<div class="img-gallery">
+<img id="${imgId}" src="${webImg}" class="img-responsive center-block" alt="${imgTag}"/>
+<div class="middle">
+<p class="text-center">${imgTag}</p>
+</div>
+</a>
+</div>
+</div>
     `  
   }
 }
@@ -140,7 +153,7 @@ vectImg()
 discoverMore.addEventListener('click', function(){
   pageMore++
   getImg()
-  postImg()
+  postImgIllustration()
   vectImg()
 
 })
