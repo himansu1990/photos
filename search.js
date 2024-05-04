@@ -14,6 +14,8 @@ function mySearch(e){
   searchResult()
 if(page === 1){
   searchRes.innerHTML = ``
+  randomchoice.innerHTML = ``
+  vectorImg.innerHTML = ``
   discoverMore.style.display = 'none'
   discoverSearch.style.display = 'block'
 }
@@ -36,14 +38,21 @@ async function searchResult(){
       let searchType = itemSearch.type
       let searchTag = itemSearch.tags 
       let itemId = itemSearch.id
-      
+      let webImg = itemSearch.webformatURL
 
       if(i % 3 === 0) { 
           searchRes.innerHTML += `<div class="row">`
         }
+       document.querySelector('.editortxt').innerHTML = ``
        editorChoice.innerHTML = ``
-       searchRes.innerHTML += `<div class="col-lg-4 card"><a href="photos.html?id=${itemId}"><img src="${searchImg}" alt="${searchTag}"/></a>
-       <p><a href="photos.html?id=${itemId}">${searchTag}</a></p></div>`
+       randomchoice.innerHTML = ``
+       vectorImg.innerHTML = ``
+       searchRes.innerHTML += `<div class="col-lg-4 card">
+       <div class="img-gallery">
+       <a href="photos.html?id=${itemId}"><img class="img-responsive" src="${webImg}" alt="${searchTag}"/></a>
+       <p><a href="photos.html?id=${itemId}">${searchTag}</a></p>
+       </div>
+       </div>`
        
     }
     
