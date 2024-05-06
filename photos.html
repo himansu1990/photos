@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="main">
+      <div class="header1">
+        <div class="hnav">
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="container">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Photography Logo">
+                    </a>
+                  </div>
+                  <div id="navbar3" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                      <!-- <li class="active"><a href="#">Home</a></li>
+                      <li><a href="#">About</a></li>
+                      <li><a href="#">Contact</a></li> -->
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Explore <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">License</a></li>
+                          <li><a href="#">Terms</a></li>
+                          <!-- <li class="divider"></li> -->
+                          <!-- <li class="dropdown-header">Nav header</li> -->
+                          <li><a href="#">Privacy</a></li>
+                          <!-- <li><a href="#">One more separated link</a></li> -->
+                        </ul>
+                      </li>
+                    </ul>
+                  </div> 
+                  <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+              </nav> 
+            </div>
+            </div>
+            <div class="container-fluid bg-3 text-center">   
+
+            <div class="content-main">
+                
+                <div id="imageDetails"></div>
+                <div class="relatedimg"></div>
+              </div>
+            </div>  
+            <div class="footer">
+              <footer class="container-fluid text-center">
+                <p>© Copyrights <span id="year"></span> by Happy Photos. All rights reserved.</p>
+                </footer>
+          </div>      
+    </div>
+    <script>
+        // photos.html
+     let urlParameter = new URLSearchParams(window.location.search)
+     let photoId = urlParameter.get('id')
+     let pgUrlId= `photos.html?id=` + photoId
+     let relatedImg = document.querySelector('.relatedimg')
+     async function singleImg(){
+      let photoUrl = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&id=${photoId}`)
+      let rawData = await photoUrl.json()
+      let imgDetails = rawData.hits
+      console.log(rawData)
+      let photoContain = document.querySelector('#imageDetails')
+       for(let i = 0; i < imgDetails.length; i++) {
+        let photoItem = imgDetails[i]
+        let fullImgId = photoItem.id
+        let fullImg = photoItem.previewURL
+        let photoTag = photoItem.tags
+        let photoTitle = photoItem.tags
+        let largeSizeImg = photoItem.largeImageURL
+        let userImg = photoItem.userImageURL
+        let userName = photoItem.user
+        let totalImgView = photoItem.views
+        let totalDownloads = photoItem.downloads
+        let imgCollections = photoItem.collections
+        let imgLikes = photoItem.likes
+        let webImg = photoItem.webformatURL
+        document.title = photoTitle
+        photoContain.innerHTML = `<div class="row-profile">
+        <div class="row login_box">
+          <img class="img-responsive" src="${webImg}"/>
+	    <div class="col-lg-12 col-md-12 col-xs-12 user-name" align="center">
+            <div class="line"><h3>${photoTag}</h3></div>
+            <h4>Uploaded By</h4>
+            <span>${userName}</span>
+	    </div>
+        <div class="col-md-4 col-xs-4 follow line" align="center">
+            <h3>
+              ${totalDownloads} <br/> <span>Downloads</span>
+            </h3>
+        </div>
+        <div class="col-md-4 col-xs-4 follow line" align="center">
+            <h3>
+              ${totalImgView} <br/> <span>Views</span>
+            </h3>
+        </div>
+        <div class="col-md-4 col-xs-4 follow line" align="center">
+            <h3>
+              ${imgLikes} <br/> <span>Likes</span>
+            </h3>
+        </div>
+        
+        <div class="col-md-12 col-xs-12 login_control">
+                <div class="dropdown" align="center">
+                     <button class="btn btn-orange dropdown-toggle" type="button" data-toggle="dropdown">Download <span class="caret"></span></button>
+                     <ul class="dropdown-menu download-dropdown">
+      <li><a href="${fullImg}" target="_blank">Small</a></li>
+      <li><a href="${webImg}" target="_blank">Medium</a></li>
+      <li><a href="${largeSizeImg}" target="_blank">Large</a></li>
+    </ul>
+                </div>
+                
+        </div>
+        
+        </div>
+            
+    </div>
+        `
+       }
+
+      
+     }
+     singleImg()
+
+      </script>
+      <script>
+        document.getElementById("year").innerHTML = new Date().getFullYear();
+        </script>
+</body>
+</html>
