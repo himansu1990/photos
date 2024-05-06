@@ -39,6 +39,8 @@ async function searchResult(){
       let searchTag = itemSearch.tags 
       let itemId = itemSearch.id
       let webImg = itemSearch.webformatURL
+      let imgTag = itemSearch.tags
+
 
       if(i % 3 === 0) { 
           searchRes.innerHTML += `<div class="row">`
@@ -48,9 +50,14 @@ async function searchResult(){
        randomchoice.innerHTML = ``
        vectorImg.innerHTML = ``
        searchRes.innerHTML += `<div class="col-lg-4 card">
+       <a href="photos.html?id=${itemId}">
        <div class="img-gallery">
-       <a href="photos.html?id=${itemId}"><img class="img-responsive" src="${webImg}" alt="${searchTag}"/></a>
-       <p><a href="photos.html?id=${itemId}">${searchTag}</a></p>
+       <img class="img-responsive" src="${webImg}" alt="${searchTag}"/>
+       <div class="middle">
+       <p class="text-center">${imgTag}</p>
+       </div>
+       </a>
+
        </div>
        </div>`
        
