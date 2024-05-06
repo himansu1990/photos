@@ -13,7 +13,7 @@
     <div class="main">
 <div class="header background-img-home">
     <div class="hnav">
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top" style="background: transparent;">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
@@ -33,13 +33,13 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Explore <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="#">About</a></li>
+                  <li><a href="#">License</a></li>
+                  <li><a href="#">Terms</a></li>
+                  <!-- <li class="divider"></li> -->
+                  <!-- <li class="dropdown-header">Nav header</li> -->
+                  <li><a href="#">Privacy</a></li>
+                  <!-- <li><a href="#">One more separated link</a></li> -->
                 </ul>
               </li>
             </ul>
@@ -110,11 +110,13 @@
 </div>
 <div class="footer">
     <footer class="container-fluid text-center">
-        <p>&copy 2023 Project Two</p>
+      <p>© Copyrights <span id="year"></span> by Happy Photos. All rights reserved.</p>
       </footer>
 </div>
     </div>
-
+    <script>
+      document.getElementById("year").innerHTML = new Date().getFullYear();
+      </script>
     
 </body>
 <script src="app.js"></script>
