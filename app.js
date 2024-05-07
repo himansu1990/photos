@@ -6,7 +6,7 @@ let randomchoice = document.querySelector('.randomchoice')
 let vectorImg = document.querySelector('.vectorimg')
 
 async function getImg(){
-   let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&page=${pageMore}&per_page=19&image_type=photo`)
+   let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&page=${pageMore}&per_page=15&image_type=photo`)
    let imgRaw = await imgData.json()
    console.log(imgRaw)
   let itemData = imgRaw.hits
@@ -103,7 +103,7 @@ randomchoice.innerHTML += `<div class="card grid-container">
 postImgIllustration()
 
 async function vectImg(){
-  let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&category=travel&page=${pageMore}&per_page=14&image_type=photo`)
+  let imgData = await fetch(`https://pixabay.com/api/?key=37860007-782d282111110936664077067&editors_choice&category=travel&page=${pageMore}&per_page=12&image_type=photo`)
    let imgRaw = await imgData.json()
    console.log(imgRaw)
   let itemData = imgRaw.hits
