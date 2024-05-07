@@ -213,14 +213,14 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54); */
 
 /* Footer */
 .footer {
-/*   position: relative;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: auto;
   background-color: #cccccc;
   text-align: center;
   color: #000000;
-  padding: 1em; */
+  padding: 1em;
 }
 
  /* End footer */
@@ -304,7 +304,7 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54); */
 
 @media (max-width: 767px) {
   .footer{
-/*    position: relative;
+   /* position: relative;
      top: 47em; */
   }
  
@@ -332,15 +332,15 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54); */
        background: -ms-linear-gradient(45deg,  #f32d27 5%,#ff6b45 99%); /* IE10+ */
        background: linear-gradient(45deg,  #f32d27 5%,#ff6b45 99%); /* W3C */
        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f32d27', endColorstr='#ff6b45',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
-       
+       background: #ffffff;       
        width:90%;
        height:80%;
-       position:absolute;
+       position:relative;
        top:10%;
-       left:5%;
+       left:1%;
        
-       -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+       /* -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
  -moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
- box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54); */
    }
  }
